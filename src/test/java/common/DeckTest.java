@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 public class DeckTest extends TestCase{
 	
 	private Deck deck;
+	private Card topCard;
 	
 	@Test
 	public void deckHasFiftyTwoCards() {
@@ -15,7 +16,6 @@ public class DeckTest extends TestCase{
 	
 	@Test
 	public void deckIsShuffled() {
-		
 	}
 }
 
