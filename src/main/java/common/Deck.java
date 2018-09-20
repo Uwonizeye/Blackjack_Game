@@ -1,19 +1,14 @@
 package common;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Deck {
-
-
-
 	private List<Card> cards;
 	public Deck(Random random) {
-		cards = new ArrayList<Card>(Card.values().length);
-		cards.addAll(Arrays.asList(Card.values()));
+		cards = new ArrayList<Card>(Card.allCards);
 		Collections.shuffle(cards, random);
 	}
 	
@@ -22,7 +17,7 @@ public class Deck {
 		return cards.size();
 	}
 
-	//  Equals& hashcode overriden to be able to compare 2 decks
+	//  Equals& hashcode overriden 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -52,5 +47,9 @@ public class Deck {
 	@Override
 	public String toString() {
 		return cards.stream().map(Card::toString).collect(Collectors.joining(", ", "[", "]"));
+	}
+
+	public Card draw() {
+		return cards.remove(0);
 	}
 }

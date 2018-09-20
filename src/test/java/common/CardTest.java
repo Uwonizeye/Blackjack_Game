@@ -12,46 +12,23 @@ public class CardTest extends TestCase {
 	private Card king;
 	private Card ace;
 	
-	@Test
-	public void jackIsJ() {
-		
-	}
-	
-	@Test
-	public void queenIsQ() {
-		
-	}
-	
-	@Test
-	public void kingIsK() {
-		
-	}
-	
-	@Test
-	public void aceIsA() {
-		
-	}
-	
+
 	@Test
 	public void cardWorthItsValueToString() {
 		
 	}
 	
-	@Test
-	public void aceIsOne() {
-		
-	}
 	
 	@Test
-	public void aceIsEleven() {
+	public void aceIsElevenSpecialCase() {
 		
 	}
 	
 	@Test
 	public void acesPlayedTogether() {
-		
-	}
 	
+		
+	}	
 	
 }
 

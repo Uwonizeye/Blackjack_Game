@@ -1,19 +1,40 @@
 package common;
 
 import junit.framework.TestCase;
+
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
-public class DealerTest extends TestCase {
-	
-	private Dealer dealer;
+import common.Card.Rank;
+import common.Card.Suit;
+
+public class DealerTest {
 	
 	@Test
-	public void dealerHitsWithSixteenAndLower(){
+	public void test26_dealerHitsWithSixteenAndLower(){
+		// Arrange
+		Dealer dealer = new Dealer();
+		
+		// Act
+		dealer.addCard(new Card(Rank.EIGHT, Suit.C));
+		dealer.addCard(new Card(Rank.EIGHT, Suit.H));
+
+		// Assert		
+		assertTrue(dealer.shouldHit());
 	}
 	
 	@Test
-	public void dealerHitsWithSoftSeventeen() {
+	public void test27_dealerHitsWithSoftSeventeen() {
+		// Arrange
+		Dealer dealer = new Dealer();
 		
+		// Act
+		dealer.addCard(new Card(Rank.ACE, Suit.C));
+		dealer.addCard(new Card(Rank.SIX, Suit.H));
+
+		// Assert		
+		assertTrue(dealer.shouldHit());
 	}
 	
 	@Test
