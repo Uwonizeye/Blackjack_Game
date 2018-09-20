@@ -2,31 +2,36 @@ package common;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import common.GameMode.Move;
-
 public class Game {
 	public static void main(String[] args) {
-		Game game = new Game(System.in, System.out);
-		game.start();
+		try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
+			GameMode mode = Game.selectMode(in, System.out);
+			
+			Game game = new Game(mode);
+			game.play();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
-	private BufferedReader in;
-	private PrintStream out;
+	private GameMode mode;
 
-	public Game(InputStream in, PrintStream out) {
-		this.in = new BufferedReader(new InputStreamReader(in));
-		this.out = out;
+	public Game(GameMode mode) {
+		this.mode = mode;
+	}
+	
+	public enum Winner {
+		PLAYER,
+		DEALER
 	}
 
-	public void start() {
-		GameMode mode = selectMode();
+	public Winner play() {
 		Player player = new Player();
 		Dealer dealer = new Dealer();
 
@@ -51,13 +56,16 @@ public class Game {
 		System.out.println("Dealer was dealt " + card4);
 
 		if (dealer.hasBlackjack()) {
+			System.out.println("Dealer reveals cards " + dealer.getHand() + " for a value of " + dealer.getValue());
 			System.out.println("Dealer got a blackjack! Did you cross a black cat?");
 			System.out.println("Dealer Wins!");
-			return;
+			return Winner.DEALER;
 		} else if (player.hasBlackjack()) {
 			System.out.println("Player Wins!");
-			return;
+			return Winner.PLAYER;
 		}
+		
+		System.out.println("Player's hand is " + player.getHand() + " for a value of " + player.getValue() +".");
 
 		// Player Moves
 		whileStatement: while (true) {
@@ -69,8 +77,9 @@ public class Game {
 				if (player.isBusted()) {
 					System.out.println("Player busted... Oh no!");
 					System.out.println("Dealer Wins!");
-					return;
+					return Winner.DEALER;
 				}
+				System.out.println("Player's hand is " + player.getHand() + " for a value of " + player.getValue() +".");
 				if (player.hasBlackjack()) {
 					break whileStatement;
 				} else {
@@ -80,9 +89,35 @@ public class Game {
 				break whileStatement;
 			}
 		}
+		
+		// Dealer Moves
+		while (dealer.shouldHit()) {
+			Card hitCard = mode.getCard();
+			dealer.addCard(hitCard);
+			System.out.println("Dealer was dealt " + hitCard);
+			
+			if (dealer.isBusted()) {
+				System.out.println("Dealer reveals cards " + dealer.getHand() + " for a value of " + dealer.getValue());
+				System.out.println("Dealer busted! Yikes!");
+				System.out.println("Playa Wins!");
+				return Winner.PLAYER;
+			}
+		}
+
+		System.out.println("Dealer reveals cards " + dealer.getHand() + " for a value of " + dealer.getValue());
+
+		if (dealer.getValue() >= player.getValue()) {
+			System.out.println("Dealer outsmarted Player!");
+			System.out.println("Dealer Wins!");
+			return Winner.DEALER;
+		} else {
+			System.out.println("Player outmaneauvered Dealer!");
+			System.out.println("Player Wins!");
+			return Winner.PLAYER;
+		}
 	}
 
-	public GameMode selectMode() {
+	public static GameMode selectMode(BufferedReader in, PrintStream out) {
 		try {
 			String response;
 			do {

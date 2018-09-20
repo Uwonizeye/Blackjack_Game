@@ -2,6 +2,7 @@ package common;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Hand {
 	
@@ -48,5 +49,9 @@ public class Hand {
 
 	public boolean isBusted() {
 		return getValue() > 21;
+	}
+	
+	public String toString() {
+		return cards.stream().map(Card::toString).collect(Collectors.joining(", "));
 	}
 }

@@ -19,4 +19,16 @@ public class Dealer {
 	public boolean hasBlackjack() {
 		return hand.hasBlackjack();
 	}
+
+	public boolean isBusted() {
+		return hand.isBusted();
+	}
+
+	public int getValue() {
+		return hand.getValue();
+	}
+
+	public Hand getHand() {
+		return hand;
+	}
 }

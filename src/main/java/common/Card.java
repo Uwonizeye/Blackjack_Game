@@ -125,6 +125,6 @@ public final class Card {
 	//For aces:HA or SA
 	//For KQJ: SK, JH
 	@Override public String toString() {
-		return suit.name() + rank.label;
+		return rank.label + suit.name();
 	}	
 }

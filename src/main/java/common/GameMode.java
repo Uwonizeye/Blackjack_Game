@@ -3,7 +3,6 @@ package common;
 public interface GameMode {
 	
 	enum Move {
-		SPLIT,
 		HIT,
 		STAND
 	};
