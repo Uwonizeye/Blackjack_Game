@@ -12,5 +12,8 @@ public class Player {
 		return hand.hasBlackjack();		
 	}
 
+	public boolean isBusted() {
+		return hand.isBusted();
+	}
 }
 

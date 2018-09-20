@@ -15,4 +15,10 @@ public class FileGameMode implements GameMode {
 		return null;
 	}
 
+	@Override
+	public Move getPlayerMove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

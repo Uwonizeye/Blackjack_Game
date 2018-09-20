@@ -45,4 +45,8 @@ public class Hand {
 	public boolean hasBlackjack() {
 		return cards.size() == 2 && getValue() == 21;
 	}
+
+	public boolean isBusted() {
+		return getValue() > 21;
+	}
 }
