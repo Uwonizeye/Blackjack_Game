@@ -25,6 +25,7 @@ public class Hand {
 		return (hasAce && totalValue <= 11);
 	}
 
+	
 	public int getValue() {
 		boolean hasAce = false;
 		int totalValue = 0;

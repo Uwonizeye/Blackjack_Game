@@ -20,5 +20,5 @@ public class FileGameMode implements GameMode {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
+

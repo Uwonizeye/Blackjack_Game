@@ -1,6 +1,5 @@
 package common;
 
-import junit.framework.TestCase;
 
 import static org.junit.Assert.assertTrue;
 
@@ -12,7 +11,7 @@ import common.Card.Suit;
 public class DealerTest {
 	
 	@Test
-	public void test26_dealerHitsWithSixteenAndLower(){
+	public void dealerHitsWithSixteenAndLower(){
 		// Arrange
 		Dealer dealer = new Dealer();
 		
@@ -25,7 +24,7 @@ public class DealerTest {
 	}
 	
 	@Test
-	public void test27_dealerHitsWithSoftSeventeen() {
+	public void dealerHitsWithSoftSeventeen() {
 		// Arrange
 		Dealer dealer = new Dealer();
 		
@@ -37,24 +36,6 @@ public class DealerTest {
 		assertTrue(dealer.shouldHit());
 	}
 	
-	@Test
-	public void dealerHitsRepeatedly() {
-		
-	}
-	
-	@Test
-	public void dealerInitialBlackjackDetected() {
-		
-	}
-	
-	@Test
-	public void dealerHasBlackjackWins() {
-		
-	}
-	
-	@Test
-	public void displayScoreOfDealerWinningHand() {
-		
-	}
+
 	
 }

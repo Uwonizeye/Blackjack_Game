@@ -12,3 +12,4 @@ public interface GameMode {
 	Move getPlayerMove();
 
 }
+

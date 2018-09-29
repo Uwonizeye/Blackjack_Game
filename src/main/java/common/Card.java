@@ -116,14 +116,9 @@ public final class Card {
 		return rank.equals(Rank.JACK);
 	}
 	
-	// Case where ace is 11 i.e. high
-	//??
-	
 	
 	// toString method to represent individual cards
-	//For regular cards:H4 or C8
-	//For aces:HA or SA
-	//For KQJ: SK, JH
+
 	@Override public String toString() {
 		return rank.label + suit.name();
 	}	

@@ -44,7 +44,7 @@ public class Game {
 		System.out.println("Player was dealt " + card2);
 
 		if (player.hasBlackjack()) {
-			System.out.println("Player has blackjack... Will the player win? Let's find out!");
+			System.out.println("Player has blackjack...!");
 		}
 
 		Card card3 = mode.getCard();
@@ -57,7 +57,7 @@ public class Game {
 
 		if (dealer.hasBlackjack()) {
 			System.out.println("Dealer reveals cards " + dealer.getHand() + " for a value of " + dealer.getValue());
-			System.out.println("Dealer got a blackjack! Did you cross a black cat?");
+			System.out.println("Dealer got a blackjack!");
 			System.out.println("Dealer Wins!");
 			return Winner.DEALER;
 		} else if (player.hasBlackjack()) {
@@ -67,6 +67,7 @@ public class Game {
 		
 		System.out.println("Player's hand is " + player.getHand() + " for a value of " + player.getValue() +".");
 
+		
 		// Player Moves
 		whileStatement: while (true) {
 			switch (mode.getPlayerMove()) {
@@ -97,9 +98,9 @@ public class Game {
 			System.out.println("Dealer was dealt " + hitCard);
 			
 			if (dealer.isBusted()) {
-				System.out.println("Dealer reveals cards " + dealer.getHand() + " for a value of " + dealer.getValue());
 				System.out.println("Dealer busted! Yikes!");
 				System.out.println("Playa Wins!");
+				System.out.println("Dealer reveals cards " + dealer.getHand() + " for a value of " + dealer.getValue());
 				return Winner.PLAYER;
 			}
 		}

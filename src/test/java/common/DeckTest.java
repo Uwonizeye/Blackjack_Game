@@ -21,6 +21,7 @@ public class DeckTest {
 		assertEquals(52, deck.cardsLeft());
 	}
 	
+	
 	@Test
 	public void deckIsShuffled() {
 		

@@ -14,12 +14,17 @@ import common.GameMode.Move;
 
 import static org.mockito.Mockito.*;
 
+// We are using Mockito along with JUnit, so that we have control over the cards that are dealt
+// Since they are otherwise drawn randomly
+// @RUnWith makes sure Junit will run with the specified class and not the built in JUnit
+
 @RunWith(MockitoJUnitRunner.class)
 public class GameTest {
 
 	@Mock
 	public GameMode gameMode;
 
+	
 	@Test
 	public void dealerWinsWithBlackjack() {
 		// Arrange
@@ -36,6 +41,7 @@ public class GameTest {
 		assertEquals(Winner.DEALER, winner);
 	}
 
+	
 	@Test
 	public void dealerWinsWithBlackjackWhenPlayerAlsoHasBlackjack() {
 		// Arrange
@@ -52,6 +58,7 @@ public class GameTest {
 		assertEquals(Winner.DEALER, winner);
 	}
 
+	
 	@Test
 	public void playerWinsWithBlackjack() {
 		// Arrange
@@ -67,6 +74,8 @@ public class GameTest {
 		// Assert
 		assertEquals(Winner.PLAYER, winner);
 	}
+	
+	
 	
 	@Test
 	public void playerBusts() {
@@ -86,6 +95,8 @@ public class GameTest {
 		assertEquals(Winner.DEALER, winner);
 	}
 
+	
+	
 	@Test
 	public void dealerBusts() {
 		// Arrange
@@ -105,6 +116,7 @@ public class GameTest {
 	}
 
 
+	
 	@Test
 	public void dealerHasSameValueAsPlayer() {
 		// Arrange
@@ -121,8 +133,6 @@ public class GameTest {
 		// Assert
 		assertEquals(Winner.DEALER, winner);
 	}
-
-
 
 
 	@Test
@@ -142,7 +152,7 @@ public class GameTest {
 		assertEquals(Winner.DEALER, winner);
 	}
 
-
+	
 	@Test
 	public void playerGreaterValueThanDealer() {
 		// Arrange

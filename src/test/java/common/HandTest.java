@@ -12,8 +12,9 @@ import common.Card.Suit;
 public class HandTest {
 
 
+	
 	@Test
-	public void test31_aceCanCountAsOne() {
+	public void aceCanCountAsOne() {
 		// Arrange
 		Hand hand = new Hand();
 
@@ -27,7 +28,7 @@ public class HandTest {
 	}
 
 	@Test
-	public void test32_aceCanCountAsEleven() {
+	public void aceCanCountAsEleven() {
 		// Arrange
 		Hand hand = new Hand();
 
@@ -40,8 +41,9 @@ public class HandTest {
 	}
 
 
+
 	@Test
-	public void test33_aceCanCountAsOneAndEleven() {
+	public void aceCanCountAsOneAndEleven() {
 		// Arrange
 		Hand hand = new Hand();
 
@@ -54,7 +56,7 @@ public class HandTest {
 	}
 
 	@Test
-	public void test34_aceCanBeCountedAsOneThenAsEleven() {
+	public void aceCanBeCountedAsOneThenAsEleven() {
 		// Arrange
 		Hand hand = new Hand();
 		hand.addCard(new Card(Rank.FIVE, Suit.C));
@@ -71,7 +73,7 @@ public class HandTest {
 
 
 	@Test
-	public void test35_aceCanCountAsOneAndOne() {
+	public void aceCanCountAsOneAndOne() {
 		// Arrange
 		Hand hand = new Hand();
 
@@ -85,7 +87,7 @@ public class HandTest {
 	}
 	
 	@Test
-	public void test36_JQKCountsAsTen() {
+	public void JQKCountsAsTen() {
 		for (Rank rank: Arrays.asList(Rank.JACK, Rank.QUEEN, Rank.KING)) {
 			// Arrange
 			Hand hand = new Hand();
